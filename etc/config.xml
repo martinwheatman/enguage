@@ -1,6 +1,5 @@
 <xml>
 	<config
-			CLASSPATH="/home/martin/ws/Enguage/bin"
 			SOFA="java com.yagadi.enguage.object.Sofa"
 			MY_NAME="martin"
 			DNU="i don't understand"

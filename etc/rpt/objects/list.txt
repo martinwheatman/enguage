@@ -25,6 +25,7 @@ On "add                             PHRASE-OBJECT                 to SUBJECT LIS
 On "add    NUMERIC-QUANTITY         PHRASE-OBJECT                 to SUBJECT LIST list": set op to    add; perform " items        add SUBJECT LIST OBJECT QUANTITY";      reply "ok".
 On "add    NUMERIC-QUANTITY UNIT of PHRASE-OBJECT                 to SUBJECT LIST list": set op to    add; perform " items        add SUBJECT LIST OBJECT QUANTITY UNIT"; reply "ok".
 On "add                             WHOM at WHERE                 to SUBJECT LIST list": set op to    add; perform " items        add SUBJECT LIST OBJECT";               reply "ok".
+On "add                             SOMEONE can be SOMETHING      to SUBJECT LIST list": set op to    add; perform " items        add SUBJECT LIST SOMEONE SOMETHING";    reply "ok".
 
 On "remove                          PHRASE-OBJECT               from SUBJECT LIST list": set op to remove; perform " items     remove SUBJECT LIST OBJECT";               reply "ok".
 On "remove NUMERIC-QUANTITY         PHRASE-OBJECT               from SUBJECT LIST list": set op to remove; perform " items     remove SUBJECT LIST OBJECT QUANTITY";      reply "ok".

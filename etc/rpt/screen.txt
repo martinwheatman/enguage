@@ -1,0 +1,10 @@
+On "SCREEN is a screen":
+              add SCREEN to my screen list.
+             
+wideband is a screen.
+narrowband is a screen.
+
+On "set screen as SCREEN":
+              does SCREEN exist in my user list;
+              if not, reply "sorry, SCREEN is not a recognised screen";
+              reply "ok, SCREEN is showing".

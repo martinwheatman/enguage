@@ -1,0 +1,3 @@
+On "SOMEONE can be SOMETHING":
+	add SOMEONE can be SOMETHING to my capabilities list;
+	reply "ok, SOMEONE can be SOMETHING".

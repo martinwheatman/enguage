@@ -471,32 +471,24 @@ public class Patterns extends ArrayList<Pattern> {
 		String val = null;
 		if (t.isNumeric()) {
 			
-			if (null == (val = doNumeric( utti ))) {
+			if (null == (val = doNumeric( utti )))
 				notMatched = 15;
-				return null;
-			}
 			
 		} else if (t.isList()) {
 			
-			if (null == (val = doList( patti, utti ))) {
+			if (null == (val = doList( patti, utti )))
 				notMatched = 17;
-				return null;
-			}
 			
 		} else if (t.isExpr()) {
 			
-			if (null == (val = doExpr( utti ))) {
+			if (null == (val = doExpr( utti )))
 				notMatched = 13;
-				return null;
-			}
 			
 		} else if (t.invalid( utti )) {
 			notMatched = 16;
-			return null;
 			
 		} else if (null == (val = getVariable( t, patti, utti, spatial ))) {
 			notMatched = 23;
-			return null;
 		}
 		return val;
 	}

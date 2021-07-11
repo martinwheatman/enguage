@@ -21,31 +21,32 @@ import com.yagadi.Assets;
 
 public class Enguage {
 	
-	static private String copyright = "Martin Wheatman, 2001-4, 2011-21";
+	private static String copyright = "Martin Wheatman, 2001-4, 2011-21";
 
-	static public  final String      RO_SPACE = Assets.LOCATION;
-	static public  final String      RW_SPACE = "var"+ File.separator;
+	public  static final String      RO_SPACE = Assets.LOCATION;
+	public  static final String      RW_SPACE = "var"+ File.separator;
 	
-	static public  final String           DNU = "DNU";
-	static private final boolean startupDebug = false;
-	static private       int            level = 0; // TODO: 0 = every level, -n = ignore level n
+	public  static final String           DNU = "DNU";
+	private static final boolean startupDebug = false;
+	private static      int            level = 0; // TODO: 0 = every level, -n = ignore level n
 	
-	static private Audit     audit = new Audit( "Enguage" );
-	static public  Overlay       o = Overlay.Get();
+	private static Audit     audit = new Audit( "Enguage" );
+	public  static Overlay       o = Overlay.Get();
 
-	static private Shell   shell   = new Shell( "Enguage", copyright );
-	static public  Shell   shell() {return shell;}
+	private static Shell   shell   = new Shell( "Enguage", copyright );
+	public  static Shell   shell() {return shell;}
 	
-	static public  boolean verbose = false;
+	public  static boolean verbose = false;
 	
-	static public  void init( String root ) {
+	public  static void init() {init( RW_SPACE );}
+	public  static void init( String root ) {
 		Fs.root( root );
 		Concepts.addConcepts( Assets.listConcepts() );
 		Config.load( "config.xml" );
 	}
 	
-	static public Strings mediate( Strings said ) { return mediate( "uid", said );}
-	static public Strings mediate( String uid, Strings utterance ) {
+	public static Strings mediate( Strings said ) { return mediate( "uid", said );}
+	public static Strings mediate( String uid, Strings utterance ) {
 				
 		Strings reply;
 		audit.in( "mediate", utterance.toString() );
@@ -91,27 +92,27 @@ public class Enguage {
 	}
 	
 	// ==== test code =====
-	static private boolean   serverTest = false;
+	private static boolean   serverTest = false;
 
-	static private int       portNumber = 8080;
-	static private void      portNumber( String pn ) { portNumber = Integer.parseInt( pn );}
+	private static int       portNumber = 8080;
+	private static void      portNumber( String pn ) { portNumber = Integer.parseInt( pn );}
 
 	// Call this direct, so it's not counted!
-	static private final String ihe =  "I have everything";
-	static private void clearTheNeedsList() { clearTheNeedsList( ihe );}
-	static private void clearTheNeedsList( String s ) { Enguage.mediate( new Strings( s ));	}
-	static private void tidyUpViolenceTest( String fname ) {
+	private static final String ihe =  "I have everything";
+	private static void clearTheNeedsList() { clearTheNeedsList( ihe );}
+	private static void clearTheNeedsList( String s ) { Enguage.mediate( new Strings( s ));	}
+	private static void tidyUpViolenceTest( String fname ) {
 		Enguage.mediate( new Strings( "delete "+ fname +" advocate list" ));
 		Enguage.mediate( new Strings( "delete "+ fname +" fear     list" ));
 		Enguage.mediate( new Strings( "delete _user causal list" ));
 		Enguage.mediate( new Strings( "unset the value of they" ));
 	}
-	static private void tidyUpViolenceTest() { tidyUpViolenceTest( "violence" ); }
+	private static void tidyUpViolenceTest() { tidyUpViolenceTest( "violence" ); }
 	
-	static private int testGrp = 0;
-	static private String testName = null;
-	static private boolean runTheseTests() {return runTheseTests( null );}
-	static private boolean runTheseTests( String title ) {
+	private static int testGrp = 0;
+	private static String testName = null;
+	private static boolean runTheseTests() {return runTheseTests( null );}
+	private static boolean runTheseTests( String title ) {
 		++testGrp;
 		boolean runTheseTests = testName != null ?
 				title != null && title.contains( testName )
@@ -120,19 +121,18 @@ public class Enguage {
 		return runTheseTests;
 	}
 	
-	static private String testPrompt = "";
-	static private String testPrompt() { return testPrompt;}
-	static private void   testPrompt( String prompt) { testPrompt = prompt;}
+	private static String testPrompt = "";
+	private static String testPrompt() { return testPrompt;}
+	private static void   testPrompt( String prompt) { testPrompt = prompt;}
 	
-	static private String replyPrompt = "";
-	static private String replyPrompt() { return replyPrompt;}
-	static private void   replyPrompt( String prompt) { replyPrompt = prompt;}
+	private static String replyPrompt = "";
+	private static String replyPrompt() { return replyPrompt;}
+	private static void   replyPrompt( String prompt) { replyPrompt = prompt;}
 	
-	static public  void test( Strings cmd ) { test( cmd.toString() );}
-	static private void test( String  cmd ) { test( cmd, null );}
-	static private void test( String  cmd, String expected ) { test( cmd, expected, null );}
-	static private void test( String  cmd, String expected, String unexpected ) {
-		
+	public  static void test( Strings cmd ) { test( cmd.toString() );}
+	private static void test( String  cmd ) { test( cmd, null );}
+	private static void test( String  cmd, String expected ) { test( cmd, expected, null );}
+	private static void test( String  cmd, String expected, String unexpected ) {
 		// expected == null => silent!
 		if (expected != null)
 			Audit.log( testPrompt()+ cmd +".");
@@ -186,6 +186,9 @@ public class Enguage {
 //		if (runThisTest( "title" )) {
 //			test( "", "" );
 //		}
+		if (runTheseTests( "can - capabilities" )) {
+			test( "flowers can be yellow", "ok , flowers can be yellow" );
+		}
 		if (runTheseTests( "Megan's Thales Experiment" )) {
 			/*
 //			test( "you can say variable colour is a colour", "go on" );
